@@ -1,0 +1,23 @@
+<script type='text/javascript'>
+  var Module = {};
+
+  fetch('lib.wasm')
+    .then(response => response.arrayBuffer())
+    .then(buffer => {
+      Module.wasmBinary = buffer;
+      Module.TOTAL_MEMORY = 16777216 * 2;
+
+      var script = document.createElement('script');
+      script.src = "lib.js";
+      script.onload = function() {
+        console.log("Starting.")
+
+        let then = performance.now();
+        const result = _rust_function(13);
+        console.log("it took how long? ", performance.now() - then);
+
+        console.log(`result: ${result}`);
+      }
+      document.body.appendChild(script);
+    });
+</script>

@@ -1,0 +1,10 @@
+[package]
+name = "rust-wasm-example"
+version = "0.1.0"
+authors = ["Lin Clark <lclark@mozilla.com>"]
+
+[dependencies]
+ultra = "0.3.1"
+
+[replace]
+"ultra:0.3.1" = { git = 'https://github.com/linclark/ultra' }
